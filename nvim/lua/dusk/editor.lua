@@ -14,6 +14,11 @@ vim.opt.relativenumber = true -- Show relative line numbers for other lines
 vim.opt.ignorecase = true  -- Ignore case when searching
 vim.opt.smartcase = true   -- Override ignorecase if search includes uppercase letters
 
+vim.opt.wrap = false
+vim.opt.termguicolors = true
+
+vim.opt.scrolloff = 8
+
 -- Set whitespace placeholders
 -- vim.opt.list = true
 -- local space = "·"
