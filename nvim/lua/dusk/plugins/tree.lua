@@ -16,12 +16,49 @@ return {
             view = {
                 width = 40,
                 side = "right",
+                float = {
+                    enable = false,
+                },
             },
             renderer = {
-                group_empty = true,
+                group_empty = false,
+                indent_markers = {
+                    enable = true,
+                    inline_arrows = true,
+                    icons = {
+                        corner = "╰",
+                        edge = "│",
+                        item = "│",
+                        bottom = "─",
+                        none = " ",
+                    },
+                },
+                highlight_git = "name",
+                highlight_diagnostics = "name",
+                icons = {
+                    web_devicons = {
+                        file = {
+                            enable = true,
+                            color = true,
+                        },
+                        folder = {
+                            enable = true,
+                            color = true,
+                        },
+                    },
+                },
             },
             filters = {
                 enable = false,
+            },
+            update_focused_file = {
+                enable = true,
+            },
+            diagnostics = {
+                enable = true,
+            },
+            modified = {
+                enable = true,
             },
         })
 
@@ -29,7 +66,8 @@ return {
         local keymap = vim.keymap
         keymap.set("n", "<leader>ee", "<cmd>NvimTreeToggle<CR>")
         keymap.set("n", "<leader>ef", "<cmd>NvimTreeFindFileToggle<CR>")
-        keymap.set("n", "<leader>ec", "<cmd>NvimTreeCollapse<CR>")
+        keymap.set("n", "<leader>ec", "<cmd>NvimTreeCollapseKeepBuffers<CR>")
+        keymap.set("n", "<leader>eC", "<cmd>NvimTreeCollapse<CR>")
         keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>")
         -- toggle focus on the nvim-tree window
         keymap.set("n", "<leader>et", function()
