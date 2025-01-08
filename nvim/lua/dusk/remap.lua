@@ -30,5 +30,8 @@ vim.keymap.set("x", "<leader>p", "\"_dP")
 -- vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
 -- Reload config
-vim.api.nvim_set_keymap('n', '<leader>rr', ':source $MYVIMRC<CR>', { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>rr", ":source $MYVIMRC<CR>", { noremap = true, silent = true })
+
+-- Clear search highlights
+vim.keymap.set("n", "<leader><space>", ":nohlsearch<CR>")
 

@@ -20,7 +20,7 @@ return {
                     additional_vim_regex_highlighting = false, -- Disable regex highlighting
                 },
                 indent = {
-                    enable = true, -- Enable treesitter-based indentation
+                    enable = false,
                 },
             }
         end,
