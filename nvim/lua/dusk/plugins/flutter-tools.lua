@@ -21,10 +21,20 @@ return {
                 exception_breakpoints = {},
                 register_configurations = function(paths)
                     local dap = require("dap")
+                    local detached = true
+
+                    -- Use detached on windows
+                    if jit.os == 'Windows' then
+                        detached = false
+                    end
+
                     dap.adapters.dart = {
                         type = "executable",
                         command = paths.flutter_bin,
                         args = { "debug-adapter" },
+                        options = {
+                            detached = detached,
+                        },
                     }
                     dap.configurations.dart = {}
                     require("dap.ext.vscode").load_launchjs()

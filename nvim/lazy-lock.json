@@ -28,7 +28,7 @@
   "neominimap.nvim": { "branch": "main", "commit": "c5cdebd3ba815fd26efc9872fb7ecadd96d10c8c" },
   "neoscroll.nvim": { "branch": "master", "commit": "f957373912e88579e26fdaea4735450ff2ef5c9c" },
   "nvim-cmp": { "branch": "main", "commit": "8c82d0bd31299dbff7f8e780f5e06d2283de9678" },
-  "nvim-dap": { "branch": "master", "commit": "0e673accbb512e1e191dfb4fecea89cc38c1bcdd" },
+  "nvim-dap": { "branch": "master", "commit": "b768c8d0ce6da614ac17ed097bf2d94e35fe1a58" },
   "nvim-dap-go": { "branch": "main", "commit": "6aa88167ea1224bcef578e8c7160fe8afbb44848" },
   "nvim-dap-ui": { "branch": "fix/render_on_continue", "commit": "96f41dae492773bf5e803e6670ca17dc1bbce672" },
   "nvim-dap-virtual-text": { "branch": "fix/clear_on_continue", "commit": "651230b078456a838767eb179a01e57cb2093ef8" },
