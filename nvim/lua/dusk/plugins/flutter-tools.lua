@@ -52,5 +52,27 @@ return {
         vim.keymap.set("n", "<leader>fll", ":FlutterLogToggle<CR>", { desc = "Toggles log buffer" })
         vim.keymap.set("n", "<leader>flL", ":FlutterLogClear<CR>", { desc = "Clears log buffer" })
         vim.keymap.set("n", "<leader>flo", ":FlutterOutlineToggle<CR>", { desc = "Toggles outline buffer" })
+
+        -- Autoload
+        local function is_flutter_project()
+            local pubspec_path = vim.fn.getcwd() .. '/pubspec.yaml'
+            print(pubspec_path)
+            if vim.fn.filereadable(pubspec_path) == 1 then
+                for line in io.lines(pubspec_path) do
+                    if line:match('sdk: flutter') then
+                        return true
+                    end
+                end
+            end
+            return false
+        end
+
+        local flutter_tools = require('flutter-tools')
+        local flutter_lsp = require('flutter-tools.lsp')
+        if is_flutter_project() then
+            flutter_tools.setup_project({})
+            flutter_lsp.attach()
+        end
+        -- ----------------------
     end
 }
