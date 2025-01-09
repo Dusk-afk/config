@@ -108,7 +108,7 @@ function M.opts()
                     padding = 1,
                 },
                 {
-                    filetype = "dapui_repl",
+                    filetype = "dap-repl",
                     text = "Debugger",
                     highlight = "PanelHeading",
                     padding = 1,

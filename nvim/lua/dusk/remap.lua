@@ -10,7 +10,11 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 -- Append next line to current line while keeping the cursor at same location
-vim.keymap.set("n", "J", "mzJ`z")
+vim.keymap.set("n", "J", "mzJ`z:delm z<CR>")
+
+-- Paste without losing cursor position
+vim.keymap.set("n", "p", "mzp`z:delm z<CR>")
+vim.keymap.set("n", "<S-p>", "mz<S-p>`z:delm z<CR>")
 
 -- Copy to clipboard
 vim.keymap.set("n", "<leader>y", "\"+y")
