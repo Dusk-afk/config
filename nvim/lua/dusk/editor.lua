@@ -20,11 +20,11 @@ vim.opt.termguicolors = true
 
 vim.opt.scrolloff = 8
 
--- vim.api.nvim_create_autocmd("TextYankPost", {
---     callback = function()
---         vim.highlight.on_yank()
---     end,
--- })
+vim.api.nvim_create_autocmd("TextYankPost", {
+    callback = function()
+        vim.highlight.on_yank()
+    end,
+})
 
 -- Set whitespace placeholders
 -- vim.opt.list = true

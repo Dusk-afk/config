@@ -56,10 +56,10 @@ return {
         },
     },
     keys = {
-        { "<leader>tt", function() Snacks.terminal() end,       desc = "Toggle Terminal" },
-        { "<leader>to", function() Snacks.terminal.open() end,  desc = "Toggle Terminal" },
-        { "<leader>H",  function() Snacks.dashboard.open() end, desc = "Dashboard (Home)" },
-        { "<leader>hl", function() Snacks.lazygit() end, desc = "Lazygit" },
+        { "<leader>tt", function() Snacks.terminal() end,         desc = "Toggle Terminal" },
+        { "<leader>to", function() Snacks.terminal.open() end,    desc = "Toggle Terminal" },
+        { "<leader>H",  function() Snacks.dashboard.open() end,   desc = "Dashboard (Home)" },
+        { "<leader>hl", function() Snacks.lazygit() end,          desc = "Lazygit" },
         { "<leader>hf", function() Snacks.lazygit.log_file() end, desc = "Lazygit Current File History" },
     },
     init = function()

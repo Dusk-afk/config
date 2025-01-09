@@ -26,7 +26,12 @@ return {
             function()
                 vim.cmd("SessionRestore")
             end
-        }
+        },
+        session_lens = {
+            theme_conf = {
+                border = true,
+            },
+        },
     },
     keys = {
         -- Will use Telescope if installed or a vim.ui.select picker otherwise
