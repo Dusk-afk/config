@@ -27,7 +27,7 @@ return {
         local on_quit = function()
             local ok = vim.fn.confirm("Do you really want to quit?", "&Yes\n&No", 2)
             if ok == 1 then
-                vim.cmd("Leet quit")
+                vim.cmd("Leet exit")
             end
         end
         vim.keymap.set("n", "<leader>lq", on_quit, { desc = "LeetCode: Quit" })

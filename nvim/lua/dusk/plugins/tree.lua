@@ -57,6 +57,21 @@ return {
             modified = {
                 enable = true,
             },
+            actions = {
+                open_file = {
+                    window_picker = {
+                        enable = true,
+                        picker = "default",
+                        chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
+                        exclude = {
+                            filetype = { "notify", "packer", "qf", "diff", "fugitive", "fugitiveblame",
+                                "dapui_breakpoints", "dapui_scopes", "dapui_stacks", "dapui_watches", "dap-repl",
+                                "dapui_console", },
+                            buftype = { "nofile", "terminal", "help" },
+                        },
+                    },
+                }
+            }
         })
 
         -- remaps
