@@ -23,3 +23,5 @@ waybar_*/
 yay/
 kwalletrc
 
+*/*.env
+
