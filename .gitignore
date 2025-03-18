@@ -23,5 +23,7 @@ waybar_*/
 yay/
 kwalletrc
 
-*/*.env
+*.env
+*.log
+*.log.*
 
