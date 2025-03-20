@@ -155,9 +155,8 @@ widgets:
   clock:
       type: "yasb.clock.ClockWidget"
       options:
-        # label: "{%a %d, %b %H:%M}"
-        label: "{%I:%M:%S}\n{%d/%m/%Y}"
-        label_alt: "{%I:%M:%S}\n{%a, %d %b %Y}"
+        label: "{%I:%M:%S<br/>%d/%m/%Y}"
+        label_alt: "{%I:%M:%S<br/>%a, %d %b %Y}"
         #locale: 'en_EN' # Langugae for date, you can set your own, example fr_FR
         timezones: [] #Looking up time zone info from registry
         #timezones: ["America/Montreal"]
