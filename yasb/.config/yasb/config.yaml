@@ -4,19 +4,16 @@ watch_config: true
 
 env_file: ".env"
 
+# ? No komorebi yet
 # This komorebi setting will be used for tray context menu.
-# If you don't use komorebi, you can remove this section.
-komorebi:
-  start_command: "komorebic start --whkd"
-  stop_command: "komorebic stop --whkd"
-  reload_command: "komorebic reload-configuration"
+# komorebi:
+#   start_command: "komorebic start --whkd"
+#   stop_command: "komorebic stop --whkd"
+#   reload_command: "komorebic reload-configuration"
   
-# This is the main configuration file for Yet Another Status Bar (YASB)
 bars:
   status-bar:
     enabled: true
-    #screens: ['DELL P2419H (1)'] 
-    #screens: ['DELL P2419H (2)'] 
     screens: ['*'] 
     class_name: "yasb-bar"
     alignment:
@@ -26,7 +23,7 @@ bars:
       enabled: false
       acrylic: false 
       dark_mode: false
-      round_corners: false
+      round_corners: true
       border_color: None
     window_flags:
       always_on_top: true
@@ -36,23 +33,20 @@ bars:
       width: "100%"
       height: 40
     padding:
-      top: 0
-      left: 0
-      bottom: 0
-      right: 0
+      top: 2
+      left: 2
+      bottom: 2
+      right: 2
     widgets:
       left:
         [
           "home",
-          # "komorebi_workspaces",
-          "apps",
+        #   "apps",
           "systray",
           "taskbar",
-         "active_window"
+            "active_window"
         ] 
-      center: [
-        #  "active_window"
-        ]
+      center: [ ]
       right:
         [
           "media",
@@ -60,7 +54,7 @@ bars:
           "github",
           "cpu",
           "memory",
-          # "weather",
+          "weather",
           "volume",
           "wifi",
           "battery",
@@ -104,7 +98,7 @@ widgets:
   media:
     type: "yasb.media.MediaWidget"
     options:
-      label: "{title}"
+      label: "{title}<br/>{artist}"
       label_alt: "{title} - {artist}"
       max_field_size:
         label: 50
@@ -117,10 +111,17 @@ widgets:
       thumbnail_padding: 8
       thumbnail_corner_radius: 16 # Set to 0 for square corners
       icons:
-        prev_track: "\ue892"
-        next_track: "\ue893"
-        play: "\ue768"
-        pause: "\ue769"
+        prev_track: "󰒮"
+        next_track: "󰒭"
+        play: ""
+        pause: ""
+      container_padding:
+        right: 4
+        left: 4
+        top: 2
+        bottom: 2
+      callbacks:
+        on_left: "do_nothing"
 
   active_window:
       type: "yasb.active_window.ActiveWindowWidget"
@@ -137,7 +138,7 @@ widgets:
   battery:
       type: "yasb.battery.BatteryWidget"
       options:
-        label: "<span>{icon}</span>"
+        label: "<span>{icon}</span>{percent}%"
         label_alt: "<span>{icon}</span> {percent}% | Time: {time_remaining}"
         update_interval: 5000
         charging_options:
@@ -150,7 +151,7 @@ widgets:
           icon_high: "󰂁"
           icon_full: "󰁹"
         callbacks:
-          on_left: "toggle_label"
+          on_left: "do_nothing"
 
   clock:
       type: "yasb.clock.ClockWidget"
@@ -166,7 +167,7 @@ widgets:
   cpu:
       type: "yasb.cpu.CpuWidget"
       options:
-        label: " \n{info[percent][total]}%"
+        label: "<span> </span>\n{info[percent][total]}%"
         label_alt: " {info[histograms][cpu_percent]}"
         update_interval: 2000
         histogram_icons:
@@ -181,15 +182,17 @@ widgets:
           - '\u2588' # 80%+
         histogram_num_columns: 8
         callbacks:
+          on_left: "do_nothing"
           on_right: "exec cmd /c Taskmgr"
 
   memory:
       type: "yasb.memory.MemoryWidget"
       options:
-        label: " \n{virtual_mem_percent}%"
+        label: "<span> </span>\n{virtual_mem_percent}%"
         label_alt: " \n VIRT: {virtual_mem_percent}% SWAP: {swap_mem_percent}%"
         update_interval: 2000
         callbacks:
+          on_left: "do_nothing"
           on_right: "exec cmd /c Taskmgr"
           on_middle: "exec \"C:\\Program Files\\Mem\ Reduct\\memreduct.exe\" --clean"
 
@@ -231,11 +234,11 @@ widgets:
   wifi:
       type: "yasb.wifi.WifiWidget"
       options:
-        label: "<span>{wifi_icon}</span>"
+        label: "<span>{wifi_icon}</span>{wifi_strength}%"
         label_alt: "<span>{wifi_icon}</span> {wifi_name} {wifi_strength}%"
         update_interval: 5000
         callbacks:
-          on_left: "toggle_label"
+          on_left: "do_nothing"
           on_middle: "do_nothing"
           on_right: "exec cmd.exe /c start ms-settings:network"
         wifi_icons: [
@@ -250,12 +253,13 @@ widgets:
       type: "yasb.traffic.TrafficWidget"
       options:
         # label: "<span>\udb86\uddb3</span>{download_speed} | <span>\udb86\uddb2</span>{upload_speed}"
-        label: " {download_speed}\n  {upload_speed}"
-        label_alt: "Download {download_speed} \ue621 Upload {upload_speed}"
+        label: "{upload_speed}<span></span><br/>{download_speed}<span></span>"
+        # label: "{download_speed}<br/>{upload_speed}"
+        label_alt: "-"
         update_interval: 1000 # Update interval should be a multiple of 1000
         hide_if_offline: true
         callbacks:
-          on_left: "toggle_label"
+          on_left: "do_nothing"
           # on_right: "exec cmd /c Taskmgr"
 
   ip_info:
@@ -276,25 +280,31 @@ widgets:
   weather:
       type: "yasb.weather.WeatherWidget"
       options:
-        label: "<span>{icon}</span> {temp}"
+        label: "<span>{icon_class}</span> {temp}"
         label_alt: "{location}: Min {min_temp}, Max {max_temp}, Humidity {humidity}"
-        api_key: '3bf4cf9a7c3f40d6b31174128242807' # Get your free API key from https://www.weatherapi.com/
+        api_key: 'env' # Get your free API key from https://www.weatherapi.com/
         update_interval: 600 # Update interval in seconds, Min 600 seconds
         hide_decimal: true
-        location: 'Los Angeles, CA, USA' # You can use "USA Los Angeles 90006" {COUNTRY CITY ZIP_CODE}, or just city.
+        location: 'env'
         callbacks:
-          on_left: "toggle_label"
+          on_left: "do_nothing"
         icons: 
-          sunnyDay: "\ue30d"
-          clearNight: "\ue32b"
-          cloudyDay: "\udb81\udd99"
-          cloudyNight: "\ue311"
-          rainyDay: "\udb81\ude7e"
-          rainyNight: "\udb81\ude7e"
+          # sunnyDay: "\ue30d"
+          sunnyDay: "󰖨"
+          # clearNight: "\ue32b"
+          clearNight: ""
+          # cloudyDay: "\udb81\udd99"
+          cloudyDay: ""
+          # cloudyNight: "\ue311"
+          cloudyNight: ""
+          # rainyDay: "\udb81\ude7e"
+          rainyDay: ""
+          # rainyNight: "\udb81\ude7e"
+          rainyNight: ""
           snowyIcyDay: "\udb81\udd98"
           snowyIcyNight: "\udb81\udd98"
-          blizzard: "\uebaa"
-          default: "\uebaa"
+          blizzard: ""
+          default: "󱓤"
           # https://www.weatherapi.com/docs/
           # Usage {temp}, {min_temp}, {max_temp}, {temp_f}, {min_temp_f}, {max_temp_f}, {location}, {humidity}, {icon}, {conditions}
 
@@ -313,8 +323,7 @@ widgets:
   volume:
       type: "yasb.volume.VolumeWidget"
       options:
-        label: "<span>{icon}</span>"
-        label_alt: "{volume}"
+        label: "<span>{icon}</span>{level}"
         volume_icons:
           - ""  # Icon for muted
           - ""  # Icon for 0-10% volume
@@ -329,7 +338,7 @@ widgets:
   power_menu:
       type: "yasb.power_menu.PowerMenuWidget"
       options:
-        label: "\uf011"
+        label: "<span>\uf011</span>"
         uptime: True
         blur: False
         blur_background: True
@@ -368,7 +377,7 @@ widgets:
   github:
       type: "yasb.github.GithubWidget"
       options:
-        label: "<span>\ueba1</span>"
+        label: "<span>\ueba1</span>{data}"
         label_alt: "Notifications {data}" # {data} return number of unread notification
         token: env # GitHub Personal access tokens (classic) https://github.com/settings/tokens
         max_notification: 20 # Max number of notification displaying in menu max: 50
@@ -415,17 +424,17 @@ widgets:
         titles: []
         classes: []
       container_padding: 
-        top: 0
-        left: 8
-        bottom: 0
-        right: 8
+        top: 2
+        left: 2
+        bottom: 2
+        right: 2
 
   systray:
     type: "yasb.systray.SystrayWidget"
     options:
       class_name: "systray"
-      label_collapsed: "▶"
-      label_expanded: "▼"
+      label_collapsed: ""
+      label_expanded: ""
       label_position: "left" # Can be "left" or "right"
       icon_size: 16 # Can be any integer between 8 and 64
       pin_click_modifier: "alt" # Can be "ctrl", "alt" or "shift"

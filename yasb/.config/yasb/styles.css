@@ -1,102 +1,239 @@
-/*
-.widget .label {} -> Global label for all
-.active-window-widget {} -> Styles specific to the active window widget
-.clock-widget {} -> Styles specific to the clock widget
-.cpu-widget {} -> Styles specific to the CPU widget
-.memory-widget {} -> Styles specific to the memory widget
-.weather-widget {} -> Styles specific to the weather widget
-.komorebi-workspaces {} -> Styles specific to komorebi workspaces
-.komorebi-active-layout {} -> Styles specific to komorebi active layout
-.volume-widget {} -> Styles specific to the volume widget 
-.apps-widget {} -> Styles specific to the apps widget
-.power-menu-widget {} -> Styles for the power menu button widget
-.power-menu-popup {} -> Styles for the power menu popup widget
-.power-menu-popup > .button {} -> Styles for power buttons inside the popup 
-.power-menu-popup > .button > .icon,
-.power-menu-popup > .button > .label {} -> Styles for power buttons icons and labels inside the popup 
-.media-widget {} -> Styles specific to the media widget
-.github-widget {} -> Styles specific to the github widget
-*/
+:root {
+	--rosewater: #f5e0dc;
+	--flamingo: #f2cdcd;
+	--pink: #f5c2e7;
+	--mauve: #cba6f7;
+	--red: #f38ba8;
+	--maroon: #eba0ac;
+	--peach: #fab387;
+	--yellow: #f9e2af;
+	--green: #a6e3a1;
+	--teal: #94e2d5;
+	--sky: #89dceb;
+	--sapphire: #74c7ec;
+	--blue: #89b4fa;
+	--lavender: #b4befe;
+	--text: #cdd6f4;
+	--subtext1: #bac2de;
+	--subtext0: #a6adc8;
+	--overlay2: #9399b2;
+	--overlay1: #7f849c;
+	--overlay0: #6c7086;
+	--surface2: #585b70;
+	--surface1: #45475a;
+	--surface0: #313244;
+	--base: #1e1e2e;
+	--mantle: #181825;
+	--crust: #11111b;
+}
+
 * {
-	font-size: 12px;
-	color: #cdd6f4;
-	font-weight: 500;
+	font-size: 10px;
+	color: var(--text);
+	font-weight: 400;
 	font-family: "JetBrainsMono NFP";
 	margin: 0;
 	padding: 0;
 }
 
 .yasb-bar {
-	padding: 4px 8px;
+	border-radius: 8px;
+	background: rgba(69, 71, 90, 0.00);
+	padding: 2px 4px;
 	margin: 0;
-	/* background-color: rgba(146, 145, 155, 0.16); */
-	background-color: #11111b;
 }
 
 .widget {
-	padding: 0 6px;
-	margin: 0;
+	padding: 2px 2px;
+	margin: 0px;
+	min-width: 32px;
+	min-height: 32px;
+	max-height: 32px;
+
+	border-radius: 8px;
+	background: var(--surface0);
 }
 
-.container-left,
-.container-center,
-.container-right {
-	margin: 0;
-	padding: 0;
+.widget::hover {
+	background: var(--base);
 }
 
-.active-window-widget .icon {
-	margin-right: 8px;
-}
-
-.komorebi-active-layout .label {
-	font-weight: 600;
-	padding: 2px 0 0 0;
-}
-
-.komorebi-workspaces .widget-container {
-	background-color: rgba(188, 195, 207, 0.178);
-	margin: 4px 0;
-	border-radius: 12px;
-}
-
-.komorebi-workspaces .ws-btn {
+/** Icon Only **/
+.home-widget .icon,
+.power-menu-widget .label {
 	font-size: 14px;
-	background-color: transparent;
-	margin: 0 4px 0 4px;
-	color: #95a0ad;
-	padding: 0;
 }
 
-.komorebi-workspaces .ws-btn.populated {
-	color: #a0c3ee;
+.home-widget .icon::hover {
+	color: var(--blue);
 }
 
-.komorebi-workspaces .ws-btn:hover,
-.komorebi-workspaces .ws-btn.populated:hover,
-.komorebi-workspaces .ws-btn.active {
-	color: #c2daf7;
+.power-menu-widget .label::hover {
+	color: var(--red);
 }
 
-/*POWER MENU WIDGET*/
+/** D Labels **/
+.clock-widget .label {
+	padding: 2px 6px;
+}
+
+/** Icon + Label **/
+.battery-widget,
+.wifi-widget,
+.volume-widget,
+.memory-widget,
+.cpu-widget,
+.weather-widget,
+.github-widget {
+	padding: 2px 4px;
+	max-width: 32px;
+}
+
+.battery-widget .icon,
+.wifi-widget .icon,
+.volume-widget .icon,
+.memory-widget .icon,
+.cpu-widget .icon,
+.weather-widget .icon,
+.github-widget .icon {
+	font-size: 10px;
+}
+
+/** D Long **/
+.traffic-widget {
+	padding-left: 8px;
+	min-width: 80px;
+	max-width: 80px;
+}
+
+.traffic-widget .icon {
+	font-size: 10px;
+	min-width: 14px;
+	max-width: 14px;
+}
+
+/** Label Only **/
+.active-window-widget .label {
+	font-size: 12px;
+	padding: 4px 4px;
+}
+
+/** Media Widget **/
+.media-widget .btn {
+	font-size: 16px;
+	min-width: 22px;
+	max-width: 22px;
+	min-height: 22px;
+	max-height: 22px;
+	padding: 0px;
+
+	border-radius: 11px;
+	background: var(--surface1);
+}
+
+.media-widget .btn::hover {
+	color: var(--blue);
+	background: var(--surface0);
+}
+
+.media-widget .btn.play {
+	font-size: 13px;
+}
+
+.media-widget .btn.disabled:hover,
+.media-widget .btn.disabled {
+	color: var(--overlay0);
+	background: var(--surface0);
+}
+
+/** Systray **/
+.systray::hover {
+	background: var(--surface0);
+}
+
+.systray .unpinned-visibility-btn {
+	border: none;
+	border-radius: 6px;
+	font-size: 14px;
+	min-width: 28px;
+	max-width: 28px;
+	min-height: 28px;
+	max-height: 28px;
+}
+
+.systray .unpinned-visibility-btn::hover {
+	background-color: var(--base);
+}
+
+.systray .button {
+	border-radius: 6px;
+	min-width: 28px;
+	max-width: 28px;
+	min-height: 28px;
+	max-height: 28px;
+}
+
+.systray .button::hover {
+	background-color: var(--base);
+}
+
+/** Taskbar **/
+.taskbar-widget::hover {
+	background: var(--surface0);
+}
+
+.taskbar-widget .app-icon {
+	border-radius: 6px;
+	min-width: 28px;
+	max-width: 28px;
+	min-height: 28px;
+	max-height: 28px;
+}
+
+.taskbar-widget .app-icon::hover {
+	background: var(--base);
+}
+
+.taskbar-widget .app-icon.foreground {
+	background: var(--surface2);
+}
+
+/** Home Menu Widget **/
+.home-menu {
+	background-color: var(--surface0);
+}
+
+.home-menu .menu-item {
+	padding: 6px 48px 7px 16px;
+	font-size: 12px;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	color: var(--text);
+	font-weight: 600;
+}
+
+.home-menu .menu-item:hover {
+	background-color: var(--base);
+	color: var(--blue);
+}
+
+.home-menu .separator {
+	max-height: 1px;
+	background-color: var(--surface2);
+}
+
+/** Power Popup Widget **/
 /* Uptime text */
 .uptime {
 	font-size: 14px;
 	margin-bottom: 10px;
-	color: #ffffff;
+	color: var(--text);
 	font-weight: 600;
 	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.power-menu-widget .label {
-	color: #f38ba8;
-	font-size: 13px;
-}
-
 .power-menu-popup {
-	background-color: rgba(24, 24, 37, 0.9);
+	background-color: var(--surface0);
 	border-radius: 12px;
-	border: 4px solid rgb(41, 42, 58);
 }
 
 .power-menu-popup .button {
@@ -104,409 +241,132 @@
 	width: 240px;
 	height: 120px;
 	border-radius: 8px;
-	background-color: rgb(41, 42, 58);
+	background-color: var(--base);
 	font-family: "SegoeUI";
-	color: white;
-	border: 1px solid rgba(255, 255, 255, 0.1);
+	color: var(--text);
+	border: 1px solid var(--surface1);
 	margin: 8px;
 }
 
 .power-menu-popup .button.hover {
-	background-color: rgb(55, 56, 75);
-	border: 1px solid rgb(55, 56, 75);
+	background-color: var(--surface1);
 }
 
 .power-menu-popup .button .label {
 	margin-bottom: 8px;
 	font-size: 16px;
 	font-weight: 600;
-	color: rgba(255, 255, 255, 0.95);
+	color: var(--text);
 	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .power-menu-popup .button .icon {
 	font-size: 48px;
 	padding-top: 8px;
-	color: rgba(255, 255, 255, 0.25);
+	color: var(--text);
 }
 
-.power-menu-popup .button.cancel .icon {
-	color: rgba(243, 139, 168, 0.55);
-}
-
+.power-menu-popup .button.cancel .icon,
 .power-menu-popup .button.cancel .label {
-	color: rgba(243, 139, 168, 0.95);
+	color: var(--red);
 }
 
-.power-menu-popup .button.shutdown .icon {
-	color: rgba(137, 180, 250, 0.55);
-}
-
+.power-menu-popup .button.shutdown .icon,
 .power-menu-popup .button.shutdown .label {
-	color: rgba(137, 180, 250, 0.95);
+	color: var(--blue);
 }
 
-/* ICONS */
-.icon {
-	font-size: 16px;
+/** Calendar Widget **/
+.calendar {
+	background-color: var(--base);
 }
 
-.memory-widget .icon,
-.volume-widget .icon,
-.weather-widget .icon,
-.wifi-widget .icon,
-.cpu-widget .icon,
-.memory-widget .icon,
-.battery-widget .icon,
-.github-widget .icon {
-	font-size: 14px;
-	/* color: #cba6f7; */
-}
-
-/* Wifi */
-.wifi-widget {}
-
-.wifi-widget .widget-container {}
-
-.wifi-widget .widget-container .label {}
-
-.wifi-widget .widget-container .label.alt {
-	margin-left: 4px;
-}
-
-.wifi-widget .widget-container .icon {}
-
-.weather-widget .icon.sunnyDay {
-	color: rgb(221, 210, 107);
-}
-
-.weather-widget .icon.clearNight {
-	color: rgb(107, 189, 221);
-	font-size: 22px;
-	margin: 1px 2px 0px 0;
-}
-
-/* MEDIA WIDGET */
-.media-widget {
-	padding: 0;
-	padding-left: 2px;
-	margin: 0;
-	border-radius: 16px;
-	margin-right: 8px;
-}
-
-.media-widget .label {
-	background-color: rgba(0, 0, 0, 0.0);
-}
-
-.media-widget .btn {
-	color: #acb2c9;
-	padding: 0 3px;
-	margin: 4px 0;
-	font-family: Segoe Fluent Icons;
-}
-
-.media-widget .btn:hover {
-	color: #89b4fa;
-}
-
-.media-widget .btn.play {
-	background-color: rgba(188, 195, 207, 0.178);
-	border-radius: 12px;
-	font-size: 14px;
-}
-
-.media-widget .btn.disabled:hover,
-.media-widget .btn.disabled {
-	color: #4e525c;
-	font-size: 12px;
+.calendar .calendar-table,
+.calendar .calendar-table::item {
 	background-color: rgba(0, 0, 0, 0);
-}
-
-/* Taskbar */
-.taskbar-widget {
-	padding: 0;
-	margin-left: 4px;
-	background-color: #1e1e2e;
-	border-radius: 8px
-}
-
-.taskbar-widget .app-icon {
-	padding: 0 4px;
-	margin: 2px 0;
-	border-radius: 4px;
-}
-
-.taskbar-widget .app-icon::hover {
-	background-color: #313244;
-}
-
-.taskbar-widget .app-icon.foreground {
-	background-color: rgba(137, 180, 250, 0.3);
-}
-
-/* Traffic */
-.traffic-widget {
-	min-width: 75px;
-	max-width: 75px;
-}
-
-.traffic-widget .widget-container {}
-
-.traffic-widget .label {
-	font-size: 10px;
-}
-
-.traffic-widget .label.alt {}
-
-.traffic-widget .icon {}
-
-/* Battery */
-.battery-widget {}
-
-.battery-widget .widget-container {}
-
-.battery-widget .widget-container .label {}
-
-.battery-widget .widget-container .label.alt {
-	margin-left: 4px;
-}
-
-.battery-widget .widget-container .icon {}
-
-.battery-widget .widget-container .label.status-low {}
-
-.battery-widget .widget-container .label.status-medium {}
-
-.battery-widget .widget-container .label.status-high {}
-
-.battery-widget .widget-container .label.status-full {}
-
-.battery-widget .widget-container .label.status-charging {}
-
-.battery-widget .widget-container .icon.status-low {}
-
-.battery-widget .widget-container .icon.status-medium {}
-
-.battery-widget .widget-container .icon.status-high {}
-
-.battery-widget .widget-container .icon.status-full {}
-
-.battery-widget .widget-container .icon.status-charging {}
-
-/* Volume */
-.volume-widget {}
-
-.volume-widget .widget-container {}
-
-.volume-widget .label {}
-
-.volume-widget .icon {}
-
-/* Volume Menu */
-.volume-slider {
-	border: none;
-}
-
-.volume-slider::groove {}
-
-.volume-slider::handle {}
-
-.audio-menu {
-	background-color: rgba(17, 17, 27, 0.4);
-}
-
-.audio-container .device {
-	background-color: transparent;
-	border: none;
-	padding: 6px 8px 6px 4px;
-	margin: 2px 0;
+	color: var(--text);
 	font-size: 12px;
-	border-radius: 4px;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	margin: 0;
+	padding: 0;
+	border: none;
+	outline: none;
 }
 
-.audio-container .device.selected {
-	background-color: rgba(255, 255, 255, 0.085);
+.calendar .calendar-table::item:selected {
+	color: var(--blue);
 }
 
-.audio-container .device:hover {
-	background-color: rgba(255, 255, 255, 0.06);
+.calendar .day-label {
+	margin-top: 20px;
 }
 
-/* Memory */
-.memory-widget {
-	min-width: 30px;
+.calendar .day-label,
+.calendar .month-label,
+.calendar .date-label {
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	font-size: 16px;
+	color: var(--text);
+	font-weight: 700;
+	min-width: 180px;
+	max-width: 180px;
 }
 
-.memory-widget .widget-container {}
-
-.memory-widget .label {
-	font-size: 10px;
+.calendar .month-label {
+	font-weight: normal;
 }
 
-.memory-widget .label.alt {
-	font-size: 10px;
+.calendar .date-label {
+	font-size: 88px;
+	font-weight: 900;
+	color: var(--blue);
+	margin-top: -20px;
 }
 
-.memory-widget .icon {}
-
-.memory-widget .label.status-low {}
-
-.memory-widget .label.status-medium {}
-
-.memory-widget .label.status-high {}
-
-.memory-widget .label.status-critical {}
-
-/* CPU */
-.cpu-widget {
-	min-width: 30px;
-}
-
-.cpu-widget .widget-container {}
-
-.cpu-widget .widget-container .label {
-	font-size: 10px;
-}
-
-.cpu-widget .widget-container .label.alt {
-	font-size: 14px;
-}
-
-.cpu-widget .widget-container .icon {}
-
-/* Media */
-.media-widget {
-	background-color: #1e1e2e;
-	padding-right: 5px;
-	padding-left: 10px;
-}
-
-.media-widget .widget-container {}
-
-.media-widget .label {
-	font-size: 10px;
-	margin-right: 2px;
-}
-
-.media-widget .label.alt {}
-
-.media-widget .btn.play {}
-
-.media-widget .btn.prev {}
-
-.media-widget .btn.next {}
-
-.media-widget .btn.disabled {}
-
-/* Systray */
-.systray {
-	background-color: #1e1e2e;
-	border-radius: 8px;
-}
-
-.systray .unpinned-container {}
-
-.systray .pinned-container {}
-
-.systray .pinned-container[forceshow=true] {
-	background: red;
-}
-
-.systray .button {
-	border-radius: 4px;
-	padding: 1px 0;
-}
-
-.systray .button:hover {
-	background: #585b70;
-}
-
-.systray .button[dragging=true] {
-	background: #fab387;
-}
-
-.systray .unpinned-visibility-btn {
-	border-radius: 4px;
-	height: 20px;
-	width: 16px;
-}
-
-.systray .unpinned-visibility-btn:checked {}
-
-.systray .unpinned-visibility-btn:hover {
-	background-color: #313244;
-}
-
-/* Apps */
-.apps-widget {}
-
-.apps-widget .widget-container {}
-
-.apps-widget .widget-container .label {
-	font-size: 14px;
-	padding: 0 1px;
-	margin: 3px 0;
-	border-radius: 4px;
-}
-
-.apps-widget .widget-container .label::hover {
-	background-color: #313244;
-}
-
-/* Github */
-.github-widget {}
-
-.github-menu .widget-container .icon {}
-
-.github-widget .widget-container {}
-
-.github-widget .widget-container .label {}
-
+/** Github Menu Widget **/
 .github-menu {
-	background-color: rgba(17, 17, 27, 0.2);
+	background-color: var(--surface0);
 	max-height: 500px;
 	min-height: 500px;
 	min-width: 420px;
 }
 
 .github-menu .header {
-	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	background-color: var(--base);
+	border-bottom: 1px solid var(--surface1);
 	font-size: 15px;
 	font-weight: 400;
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	padding: 8px;
-	color: white;
-	background-color: rgba(17, 17, 27, 0.75);
+	color: var(--text);
 }
 
 .github-menu .footer {
-	border-top: 1px solid rgba(255, 255, 255, 0.1);
+	background-color: var(--base);
+	border-top: 1px solid var(--surface1);
 	font-size: 12px;
 	padding: 4px 8px 6px 8px;
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-	color: #9399b2;
-	background-color: rgba(17, 17, 27, 0.75);
+	color: var(--text);
 }
 
 .github-menu .contents {
-	background-color: rgba(17, 17, 27, 0.2);
+	background-color: var(--surface0);
 }
 
 .github-menu .contents .item {
+	border-bottom: 1px solid var(--surface1);
 	min-height: 40px;
 	padding: 6px 0;
-	border-bottom: 1px solid rgba(255, 255, 255, 0.075);
 }
 
 .github-menu .contents .item:hover {
-	background-color: rgba(255, 255, 255, 0.05);
-	border-bottom: 1px solid rgba(255, 255, 255, 0);
+	background-color: var(--base);
 }
 
 .github-menu .contents .item .title,
 .github-menu .contents .item .description {
-	color: #9399b2;
+	color: var(--overlay0);
 	font-family: Segoe UI;
 }
 
@@ -522,7 +382,7 @@
 
 .github-menu .contents .item.new .title,
 .github-menu .contents .item.new .description {
-	color: #ffffff
+	color: var(--text);
 }
 
 .github-menu .contents .item .icon {
@@ -530,108 +390,59 @@
 	padding-right: 0;
 	padding-left: 8px;
 	padding-right: 4px;
-	color: #9399b2;
+	color: var(--overlay0);
 }
 
 .github-menu .contents .item.new .icon {
-	color: #3fb950;
+	color: var(--green);
 }
 
-/* Home */
-.home-widget {
-	/* padding: 0 4px 0 12px; */
-	margin: 2px 0;
-	border-radius: 4px;
-}
-
-.home-widget::hover {
-	background-color: #313244;
-}
-
-.home-widget .icon {}
-
-.home-widget .icon:hover {
-
-	color: #89b4fa;
-}
-
-.home-menu {
-	background-color: #181825;
-}
-
-.home-menu .menu-item {
-	padding: 6px 48px 7px 16px;
-	font-size: 12px;
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-	color: var(--text);
-	font-weight: 600;
-}
-
-.home-menu .menu-item:hover {
-	background-color: #313244;
-	color: #89b4fa;
-}
-
-.home-menu .separator {
-	max-height: 1px;
-	background-color: rgba(128, 130, 158, 0.3);
-}
-
-/* Clock */
-.clock-widget {}
-
-.clock-widget .widget-container {}
-
-.clock-widget .widget-container .label {
-	font-size: 12px;
-}
-
-.clock-widget .widget-container .label.alt {}
-
-.clock-widget .widget-container .icon {}
-
-/* Calendar */
-.calendar {
-	background-color: rgba(17, 17, 27, 0.4);
-}
-
-.calendar .calendar-table,
-.calendar .calendar-table::item {
-	background-color: rgba(17, 17, 27, 0);
-	color: rgba(162, 177, 196, 0.85);
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-	margin: 0;
-	padding: 0;
+/** Volume Menu Widget **/
+/* Volume Menu */
+.volume-slider {
 	border: none;
-	outline: none;
+	border-radius: 2px;
 }
 
-.calendar .calendar-table::item:selected {
-	color: rgb(255, 255, 255);
+.volume-slider::groove:horizontal {
+	background: var(--surface1);
+	position: absolute;
+	/* absolutely position 4px from the left and right of the widget. setting margins on the widget should work too... */
+	left: 4px;
+	right: 4px;
+	border-radius: 10px;
 }
 
-.calendar .day-label {
-	margin-top: 20px;
+.volume-slider::add-page:horizontal {
+	background: var(--surface1);
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
 }
 
-.calendar .day-label,
-.calendar .month-label,
-.calendar .date-label {
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-	font-size: 16px;
-	color: #fff;
-	font-weight: 700;
-	min-width: 180px;
-	max-width: 180px;
+.volume-slider::sub-page:horizontal {
+	background: var(--blue);
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
 }
 
-.calendar .month-label {
-	font-weight: normal;
+.audio-menu {
+	background-color: var(--surface0);
 }
 
-.calendar .date-label {
-	font-size: 88px;
-	font-weight: 900;
-	color: rgb(255, 255, 255);
-	margin-top: -20px;
+.audio-container .device {
+	background-color: transparent;
+	border: none;
+	padding: 8px 8px;
+	margin-top: 2px;
+	font-size: 10px;
+	border-radius: 14px;
+}
+
+.audio-container .device.selected {
+	background-color: var(--base);
+	color: var(--blue);
+}
+
+.audio-container .device:hover {
+	background-color: var(--surface1);
 }
