@@ -38,8 +38,8 @@
 
 .yasb-bar {
 	border-radius: 8px;
-	background: rgba(69, 71, 90, 0.00);
-	padding: 2px 4px;
+	background: rgba(69, 71, 90, 0.90);
+	padding: 2px 2px;
 	margin: 0;
 }
 
@@ -51,11 +51,11 @@
 	max-height: 32px;
 
 	border-radius: 8px;
-	background: var(--surface0);
+	background: var(--base);
 }
 
 .widget::hover {
-	background: var(--base);
+	background: var(--surface0);
 }
 
 /** Icon Only **/
@@ -128,12 +128,12 @@
 	padding: 0px;
 
 	border-radius: 11px;
-	background: var(--surface1);
+	background: var(--surface0);
 }
 
 .media-widget .btn::hover {
 	color: var(--blue);
-	background: var(--surface0);
+	background: var(--surface1);
 }
 
 .media-widget .btn.play {
@@ -142,13 +142,13 @@
 
 .media-widget .btn.disabled:hover,
 .media-widget .btn.disabled {
-	color: var(--overlay0);
-	background: var(--surface0);
+	color: var(--overlay1);
+	background: var(--surface1);
 }
 
 /** Systray **/
 .systray::hover {
-	background: var(--surface0);
+	background: var(--base);
 }
 
 .systray .unpinned-visibility-btn {
@@ -162,7 +162,7 @@
 }
 
 .systray .unpinned-visibility-btn::hover {
-	background-color: var(--base);
+	background-color: var(--surface0);
 }
 
 .systray .button {
@@ -174,12 +174,12 @@
 }
 
 .systray .button::hover {
-	background-color: var(--base);
+	background-color: var(--surface0);
 }
 
 /** Taskbar **/
 .taskbar-widget::hover {
-	background: var(--surface0);
+	background: var(--base);
 }
 
 .taskbar-widget .app-icon {
@@ -191,11 +191,11 @@
 }
 
 .taskbar-widget .app-icon::hover {
-	background: var(--base);
+	background: var(--surface0);
 }
 
 .taskbar-widget .app-icon.foreground {
-	background: var(--surface2);
+	background: var(--surface1);
 }
 
 /** Home Menu Widget **/

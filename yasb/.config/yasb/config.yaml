@@ -40,26 +40,26 @@ bars:
     widgets:
       left:
         [
-          "home",
+          # "home",
         #   "apps",
           "systray",
           "taskbar",
-            "active_window"
+          "active_window"
         ] 
       center: [ ]
       right:
         [
           "media",
           "traffic",
-          "github",
+          # "github",
           "cpu",
           "memory",
-          "weather",
+          # "weather",
           "volume",
           "wifi",
           "battery",
           "clock",
-          "power_menu"
+          # "power_menu"
         ]
 widgets:
   home:
