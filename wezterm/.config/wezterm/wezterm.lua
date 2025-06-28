@@ -1,7 +1,16 @@
 local wezterm = require 'wezterm'
-local config = {}
+local config = wezterm.config_builder()
 
-config.font = wezterm.font 'Cascadia Code'
-config.color_scheme = 'Catppuccin Macchiato'
+local colors = require 'colors'
+colors.apply_to_config(config)
+
+local window = require 'window'
+window.apply_to_config(config)
+
+config.font = wezterm.font_with_fallback {
+  'CaskaydiaCove Nerd Font',
+  'Cascadia Code',
+  'Fira Code',
+}
 
 return config
