@@ -26,4 +26,4 @@ kwalletrc
 *.env
 *.log
 *.log.*
-
+zsh/.config/zsh/modules/tokens.zshrc

@@ -4,6 +4,7 @@ local module = {}
 function module.apply_to_config(config)
     config.initial_cols = 120
     config.initial_rows = 35
+    config.font_size = 14
 
     config.window_frame = {
         -- The font used in the tab bar.
@@ -13,6 +14,7 @@ function module.apply_to_config(config)
         -- main font setting appended to it to pick up any
         -- fallback fonts you may have used there.
         font = wezterm.font_with_fallback {
+            --{ family = 'MesloLGS NF', weight = 'Bold' },
             { family = 'CaskaydiaCove Nerd Font', weight = 'Bold' },
             { family = 'Cascadia Code', weight = 'Bold' },
             { family = 'Fira Code', weight = 'Bold' }
@@ -24,15 +26,16 @@ function module.apply_to_config(config)
 
         -- The overall background color of the tab bar when
         -- the window is focused
-        active_titlebar_bg = '#1e2030',
+        active_titlebar_bg = '#11111b',
 
         -- The overall background color of the tab bar when
         -- the window is not focused
-        inactive_titlebar_bg = '#1e2030',
+        inactive_titlebar_bg = '#11111b',
     }
 
-    config.window_background_opacity = 0.95
-    config.window_decorations = "RESIZE"
+    -- config.window_background_opacity = 0.97
+    -- config.window_decorations = "RESIZE"
+    config.hide_tab_bar_if_only_one_tab = true
 end
 
 return module

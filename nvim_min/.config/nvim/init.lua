@@ -28,6 +28,24 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 -- Remaps
 vim.g.mapleader = " "
 
+-- Toggle File Explorer
+vim.keymap.set("n", "<leader>e", function()
+    local explorer_buf = nil
+    for _, win in ipairs(vim.api.nvim_list_wins()) do
+        local buf = vim.api.nvim_win_get_buf(win)
+        if vim.api.nvim_buf_get_name(buf) == "" then
+            explorer_buf = buf
+            vim.api.nvim_set_current_win(win)
+            return
+        end
+    end
+    if explorer_buf then
+        vim.cmd("close")
+    else
+        vim.cmd("Vex")
+    end
+end, { noremap = true, silent = true, desc = "Toggle File Explorer" })
+
 -- Formatter
 vim.keymap.set("n", "<leader>ft", function ()
     vim.lsp.buf.format()
