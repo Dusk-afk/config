@@ -3,19 +3,26 @@
 ##############################################
 
 ### General
+alias c='clear'
 alias clr='clear'
 alias ctr='cd ~'
 alias ll='eza -la --icons'
 alias zedit='nvim $HOME/.zshrc'
 alias sauce='source $HOME/.zshrc'
 alias vsauce='source .venv/bin/activate'
+alias rsauce='source $HOME/.venv/bin/activate'
 
 ### Git
 alias gp='git pull'
+alias gph='git push'
 alias gc='git checkout'
 alias gcb='git checkout -b'
-alias gd='git checkout -D'
 alias gcm='git commit -m'
+alias gs='git status'
+alias gm='git merge --no-commit --no-ff'
+alias gsh='git stash'
+alias gsp='git stash pop'
+alias gsa='git stash apply'
 
 ### Gradle (Spring Boot)
 alias gb='./gradlew build'
@@ -23,12 +30,18 @@ alias gbt='./gradlew build -x test'
 alias gcl='./gradlew clean'
 alias gclb='./gradlew clean build'
 alias gt='./gradlew test'
+alias gtt='./gradlew test --tests'
 alias ga='./gradlew assemble'
 alias gr='./gradlew bootRun'
 
 ### Java switching (SDKMAN)
 alias uj17='sdk use java 17.0.12-tem'
 alias uj21='sdk use java 21.0.8-tem'
+
+### Misc
+alias md='marlin doctor'
+alias ms='marlin spends'
+alias clod='claude --dangerously-skip-permissions'
 
 ##############################################
 #             FZF POWER ALIASES              #
