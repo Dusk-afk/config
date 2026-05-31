@@ -10,6 +10,12 @@ window.apply_to_config(config)
 local keys = require 'keys'
 keys.apply_to_config(config)
 
+local tabs = require 'tabs'
+tabs.apply_to_config(config)
+
+local startup = require 'startup'
+startup.apply_to_config(config)
+
 config.font = wezterm.font_with_fallback {
   --'MesloLGS NF',
   'CaskaydiaCove Nerd Font',

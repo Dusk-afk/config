@@ -5,6 +5,7 @@ function module.apply_to_config(config)
     config.initial_cols = 120
     config.initial_rows = 35
     config.font_size = 14
+    config.tab_max_width = 40
 
     config.window_frame = {
         -- The font used in the tab bar.
@@ -21,8 +22,7 @@ function module.apply_to_config(config)
         },
 
         -- The size of the font in the tab bar.
-        -- Default to 10.0 on Windows but 12.0 on other systems
-        font_size = 12.0,
+        font_size = 14.0,
 
         -- The overall background color of the tab bar when
         -- the window is focused
@@ -33,9 +33,14 @@ function module.apply_to_config(config)
         inactive_titlebar_bg = '#11111b',
     }
 
-    -- config.window_background_opacity = 0.97
-    -- config.window_decorations = "RESIZE"
+    -- Subtle translucent window with macOS background blur.
+    config.window_background_opacity = 0.95
+    config.macos_window_background_blur = 20
+    -- Keep the tab bar visible so workspace name + bell indicators are always readable.
     config.hide_tab_bar_if_only_one_tab = true
+
+    config.native_macos_fullscreen_mode = true
+    config.window_decorations = 'RESIZE'
 end
 
 return module
