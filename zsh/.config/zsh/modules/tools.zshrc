@@ -63,3 +63,17 @@ portkill() {
   echo "Killing process $pid on port $1"
   kill "$pid"
 }
+
+# Use java version
+uj() {
+  if [ -z "$1" ]; then
+    echo "Usage: uj <java-version>"
+    return 1
+  fi
+
+  export JAVA_HOME=$(/usr/libexec/java_home -v "$1")
+  export PATH="$JAVA_HOME/bin:$PATH"
+
+  echo "Switched to Java $1"
+  java -version
+}

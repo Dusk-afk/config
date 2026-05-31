@@ -23,6 +23,7 @@ alias gm='git merge --no-commit --no-ff'
 alias gsh='git stash'
 alias gsp='git stash pop'
 alias gsa='git stash apply'
+alias gy='git branch --show-current | pbcopy'
 
 ### Gradle (Spring Boot)
 alias gb='./gradlew build'
@@ -53,6 +54,9 @@ alias gcf='git branch | fzf | xargs git checkout'
 # Checkout remote branches
 alias gcr='git branch -r | sed "s/origin\///" | fzf | xargs git checkout'
 
+# Copy local branch name
+alias gyf='git branch | sed "s/^[* ]*//" | fzf | pbcopy'
+
 # Inspect commits w/ preview
 alias glp='git log --oneline | fzf --preview "git show --color=always {1}"'
 
@@ -74,3 +78,6 @@ alias pkill='plook | awk '\''{print $2}'\'' | xargs kill'
 
 # Force kill
 alias pkill9='plook | awk '\''{print $2}'\'' | xargs kill -9'
+
+####### AD-HOC Additions (Cleanup when get time)
+alias ta='tmux attach'
